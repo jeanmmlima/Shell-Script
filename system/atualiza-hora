@@ -1,0 +1,6 @@
+#!/bin/bash
+
+#Atualiza a hora da maquina
+
+sudo service ntp stop
+sudo ntpdate tapioca.ufrn.br

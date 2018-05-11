@@ -1,0 +1,11 @@
+#!/bin/bash
+
+senha="dca123"
+nome="usuario"
+comentario="Usuario Teste 3"
+
+sudo useradd -m -d /home/$nome -p $(openssl passwd -1 $senha) -s /bin/bash $nome
+
+sudo chown -R $nome /home/$nome
+
+echo "Usuario criado"

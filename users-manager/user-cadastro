@@ -1,0 +1,49 @@
+#!/bin/bash
+
+#UFRN-CT-DCA
+
+#Developed by Eng. Jean Mário
+
+clear
+
+echo "#############################"
+echo "##   CADASTRO DE USUÁRIO   ##"
+echo "##     LABGRAD - DCA       ##"
+echo "#############################"
+
+echo "Informe o seu NOME COMPLETO: "
+read nome
+
+echo "Informe o USURARIO: "
+read usuario
+
+echo "Informe sua SENHA: "
+read senha1
+
+echo "CONFIRME sua SENHA: "
+read senha2
+
+while [ $senha1 != $senha2 ]; do
+	echo "Senha não confirmada! Por favor, digite novamente!"
+	echo "Informe sua SENHA: "
+	read senha1
+
+	echo "CONFIRME sua SENHA: "
+	read senha2
+done
+	
+if [ $senha1 == $senha2 ]
+then
+	echo "Senha confirmada!"
+	sudo useradd -m -d /home/$usuario -p $(openssl passwd -1 $senha1) -s /bin/bash $usuario
+	sudo chown -R $usuario /home/$usuario
+	sudo chmod -R o-r /home/$usuario
+fi
+
+
+#sudo useradd -m -d /home/$nome -p $(openssl passwd -1 $senha) -s /bin/bash $nome
+
+#sudo chown -R $nome /home/$nome
+#sudo chmod -R o-r /home/$nome
+
+#echo "Usuario criado"
