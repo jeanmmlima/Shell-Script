@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 #UFRN-CT-DCA
@@ -18,18 +19,18 @@ echo "Informe o USURARIO: "
 read usuario
 
 echo "Informe sua SENHA: "
-read senha1
+read -s senha1
 
 echo "CONFIRME sua SENHA: "
-read senha2
+read -s senha2
 
 while [ $senha1 != $senha2 ]; do
         echo "Senha não confirmada! Por favor, digite novamente!"
         echo "Informe sua SENHA: "
-        read senha1
+        read -s senha1
 
         echo "CONFIRME sua SENHA: "
-        read senha2
+        read -s senha2
 done
 
 if [ $senha1 == $senha2 ]
@@ -38,6 +39,7 @@ then
         sudo useradd -m -d /home/$usuario -p $(openssl passwd -1 $senha1) -s /bin/bash $usuario -c "$nome"
         sudo chown -R $usuario /home/$usuario
         sudo chmod -R 711 /home/$usuario
+        echo "Usuário '$usuario' criado com sucesso!"
 fi
 
 
