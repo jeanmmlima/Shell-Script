@@ -24,20 +24,20 @@ echo "CONFIRME sua SENHA: "
 read senha2
 
 while [ $senha1 != $senha2 ]; do
-	echo "Senha não confirmada! Por favor, digite novamente!"
-	echo "Informe sua SENHA: "
-	read senha1
+        echo "Senha não confirmada! Por favor, digite novamente!"
+        echo "Informe sua SENHA: "
+        read senha1
 
-	echo "CONFIRME sua SENHA: "
-	read senha2
+        echo "CONFIRME sua SENHA: "
+        read senha2
 done
-	
+
 if [ $senha1 == $senha2 ]
 then
-	echo "Senha confirmada!"
-	sudo useradd -m -d /home/$usuario -p $(openssl passwd -1 $senha1) -s /bin/bash $usuario
-	sudo chown -R $usuario /home/$usuario
-	sudo chmod -R o-r /home/$usuario
+        echo "Senha confirmada!"
+        sudo useradd -m -d /home/$usuario -p $(openssl passwd -1 $senha1) -s /bin/bash $usuario -c "$nome"
+        sudo chown -R $usuario /home/$usuario
+        sudo chmod -R 711 /home/$usuario
 fi
 
 
