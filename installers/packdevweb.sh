@@ -24,11 +24,13 @@ sudo apt-get install apache2
 
 sudo apt-get install mysql-server
 
-#para modificacao basica de 
-#parametros de segunrança
+#Para modificacao basica de parametros de segunrança 
 #descomente a proxima linha 
 
 # sudo mysql_secure_installation
 
 # PHP
 
+sudo add-apt-repository ppa:ondrej/php
+sudo apt-get update
+sudo apt-get install php7.0 libapache2-mod-php7.0 php7.0-mcrypt php7.0-mysql
